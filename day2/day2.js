@@ -26,10 +26,6 @@ for(i in array) {
     continue
   }
 
-  
-  if (player1 === player2) {
-    score += 3
-  }
   let player2play 
 
   switch (player2){
