@@ -10,9 +10,9 @@ const opponent = {
 }
 
 const me = {
-  X: 'Rock',
-  Y: 'Paper',
-  Z: 'Scissors'
+  X: 'Lose',
+  Y: 'Draw',
+  Z: 'Win'
 }
 
 for(i in array) {
@@ -30,20 +30,38 @@ for(i in array) {
   if (player1 === player2) {
     score += 3
   }
+  let player2play 
 
   switch (player2){
-    case 'Rock':
+    case 'Lose':
+      if (player1 === 'Rock') player2play = 'Scissors'
+      if (player1 === 'Paper') player2play = 'Rock'
+      if (player1 === 'Scissors') player2play = 'Paper'
+      break
+    case 'Draw':
+      score += 3
+      if (player1 === 'Rock') player2play = 'Rock'
+      if (player1 === 'Paper') player2play = 'Paper'
+      if (player1 === 'Scissors') player2play = 'Scissors'
+      break  
+    case 'Win':
+      score += 6
+      if (player1 === 'Rock') player2play = 'Paper'
+      if (player1 === 'Paper') player2play = 'Scissors'
+      if (player1 === 'Scissors') player2play = 'Rock'
+  } 
+
+  switch (player2play){
+     case 'Rock':
       score += 1
-      if (player1 === 'Scissors') score += 6
       break
     case 'Paper':
       score += 2
-      if (player1 === 'Rock') score += 6
-      break  
+      break
     case 'Scissors':
       score += 3
-      if (player1 === 'Paper') score += 6
-  } 
+      break
+  }
 }
 
 console.log('score: ', score)
