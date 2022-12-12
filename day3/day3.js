@@ -57,23 +57,31 @@ const numMap = {
   'Y': 51,
   'Z': 52,
 }
+let charSet
+let dupCharSet
 
-array.forEach((line) => {
-  const haflway = line.length / 2
-  const charSet = new Set()
-  let duplicate
+array.forEach((line,i) => {
 
-  line.split('').every((char,i) => {
-    if (i < haflway) {
+  if (i%3 === 0){
+    charSet = new Set()  
+  } else if (i%3 === 1) {
+    dupCharSet = new Set()  
+  }
+
+  line.split('').every((char) => {
+    if (i%3 === 0){
       charSet.add(char)
-    } else {
+    } else if (i%3 === 1) {
       if (charSet.has(char)){
+        dupCharSet.add(char)
+      }
+    } else {
+      if (charSet.has(char) && dupCharSet.has(char)){
         total += numMap[char]
         return false
       }
     }
     return true
-
   })
 })
 
