@@ -13,9 +13,14 @@ array.forEach((line) => {
   const elf1Range = pairs[0].split('-')
   const elf2Range = pairs[1].split('-')
 
+  const prevTotal = total
   if (parseInt(elf1Range[0]) >= parseInt(elf2Range[0]) && parseInt(elf1Range[1]) <= parseInt(elf2Range[1])){
     total += 1
   } else if (parseInt(elf1Range[0]) <= parseInt(elf2Range[0]) && parseInt(elf1Range[1]) >= parseInt(elf2Range[1])){
+    total += 1
+  } else if (parseInt(elf1Range[0]) >= parseInt(elf2Range[0]) && parseInt(elf1Range[0]) <= parseInt(elf2Range[1])){
+    total += 1
+  } else if (parseInt(elf1Range[1]) >= parseInt(elf2Range[0]) && parseInt(elf1Range[1]) <= parseInt(elf2Range[1])){
     total += 1
   }
 })
